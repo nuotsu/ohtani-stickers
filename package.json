@@ -2,14 +2,22 @@
 	"name": "ohtani-stickers",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "svelte-kit dev",
+		"dev": "TAILWIND_MODE=watch svelte-kit dev",
 		"build": "svelte-kit build",
 		"preview": "svelte-kit preview"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-netlify": "^1.0.0-next.33",
 		"@sveltejs/kit": "next",
-		"svelte": "^3.42.6"
+		"postcss": "^8.3.9",
+		"postcss-load-config": "^3.1.0",
+		"svelte": "^3.42.6",
+		"svelte-preprocess": "^4.9.8",
+		"tailwindcss": "^2.2.17"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@sanity/client": "^2.21.0",
+		"@sanity/image-url": "^1.0.1"
+	}
 }
