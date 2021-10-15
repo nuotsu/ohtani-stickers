@@ -14,10 +14,16 @@
 
 		@apply px-4 gap-4;
 	}
+
+	@media (max-width: 475px) {
+		ul {
+			@apply grid-cols-3;
+		}
+	}
 </style>
 
 <script>
-	import Sticker from '$lib/Sticker.svelte'
+	import Sticker from '$lib/Sticker/Sticker.svelte'
 	import { selectedEmoji, randomSticker } from '$lib/stores'
 
 	export let stickers

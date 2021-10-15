@@ -3,7 +3,8 @@
 
 	{#each [...new Set(emojis)] as emoji}
 		<button
-			class:active={$selectedEmoji === emoji}
+			class="emoji transition-opacity"
+			class:opacity-30={!!$selectedEmoji && !($selectedEmoji === emoji)}
 			on:click={() => handleClick(emoji)}
 		>
 			{emoji}
@@ -13,23 +14,23 @@
 
 <style lang="postcss">
 	.root {
+		position: sticky;
+		z-index: 1;
 		display: flex;
-		width: 100%;
 		overflow-x: auto;
 		text-align: center;
 
-		@apply no-scrollbar text-2xl before:m-auto after:m-auto;
+		@apply
+			gap-2 my-2 p-1 top-2 rounded-md text-2xl max-w-max mx-auto no-scrollbar
+			backdrop-filter backdrop-blur-sm bg-gray-100 bg-opacity-90
+			before:m-auto after:m-auto
+		;
 	}
 
 	button {
 		user-select: none;
-		outline: none;
 
-		@apply p-1 rounded hover:bg-gray focus:bg-gray;
-	}
-
-	button.active {
-		@apply bg-red;
+		@apply rounded;
 	}
 </style>
 

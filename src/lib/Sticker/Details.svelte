@@ -3,27 +3,24 @@
 		<button class="close" on:click={() => selectedSticker.set(false)}>×</button>
 
 		<div class="title gap-2 pr-1">
-			<p class="text-2xl text-red">{emotion.emoji} {stars}</p>
+			<p class="text-2xl text-red">{emotion.emoji}</p>
 
 			<figure class="preview relative" transition:scale={{ delay: 600 }}>
 				<img
 					src={urlFor(image.face).height(100).url()}
-					alt={meta.description || `${emotion.emoji} ${stars}`}
+					alt={meta.description || emotion.emoji}
 					draggable="false"
 				/>
 			</figure>
 		</div>
 
-		<p>
-			<a href={downloadUrl} class="link text-red">Download</a>
-			<a href={image.source || image.original} {...newtab} class="link text-red">Context</a>
-		</p>
+		<Actions/>
 
-		<div>
+		<div class="meta">
+			<time datetime={meta.date} class="text-gray-400">{formatDate(meta.date)}</time>
 			{#if meta.description}
-				<p>{meta.description}</p>
+				<p class="mt-2">{meta.description}</p>
 			{/if}
-			<time datetime={meta.date}>{formatDate(meta.date)}</time>
 		</div>
 	</div>
 {/key}
@@ -52,12 +49,31 @@
 		right: 0; bottom: 0;
 	}
 
+	.meta {
+		font-size: smaller;
+
+		@apply mt-4;
+	}
+
+	time {
+		display: block;
+		text-transform: uppercase;
+		font-size: smaller;
+	}
+
 	.close {
 		position: absolute;
 		top: 0;
 		right: 0;
+		display: grid;
+		place-content: center;
+		outline: none;
 
-		@apply m-2;
+		@apply p-3 w-3 h-3 rounded-full transition-opacity;
+	}
+
+	.close:not(:hover):not(:focus) {
+		opacity: 0.3;
 	}
 </style>
 
@@ -65,9 +81,9 @@
 	import { slide, scale } from 'svelte/transition'
 	import { selectedSticker } from '$lib/stores'
 	import { urlFor } from '$lib/sanity'
-	import newtab from '$lib/newtab'
+	import Actions from './Actions.svelte'
 
-	export let _id, image, emotion, meta, stars
+	export let _id, image, emotion, meta
 
 	function formatDate(date) {
 		return new Date(date).toLocaleDateString('en-US', {
@@ -76,8 +92,4 @@
 			year: 'numeric',
 		})
 	}
-
-	const downloadUrl = urlFor(image.face)
-		.forceDownload(`shohei-ohtani-${emotion.emoji}`)
-		.url()
 </script>

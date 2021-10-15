@@ -1,8 +1,8 @@
 <div class="root">
-	<figure data-emoji={sticker.emotion.emoji} on:click={handleClick}>
+	<figure data-emoji={sticker.emotion.emoji} on:click={() => selectedSticker.set(sticker)}>
 		<img
 			src={urlFor(sticker.image.face).height(200).auto('format').url()}
-			alt={sticker.meta.description || `${sticker.emotion.emoji} ${stars}`}
+			alt={sticker.meta.description || sticker.emotion.emoji}
 		/>
 	</figure>
 </div>
@@ -29,9 +29,12 @@
 		z-index: -1;
 		right: 0;
 		bottom: 0;
-		opacity: 0.4;
 
-		@apply text-2xl;
+		@apply text-2xl transition-opacity;
+	}
+
+	figure:not(:hover)::after {
+		opacity: 0.3;
 	}
 
 	img {
@@ -46,13 +49,4 @@
 	import { selectedSticker } from '$lib/stores'
 
 	export let sticker
-
-	const stars = new Array(sticker.emotion.level).fill`★`.join``
-
-	function handleClick() {
-		selectedSticker.set({
-			...sticker,
-			stars,
-		})
-	}
 </script>

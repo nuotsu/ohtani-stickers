@@ -8,7 +8,7 @@
 <script>
 	import EmojiList from '$lib/EmojiList.svelte'
 	import StickerList from '$lib/StickerList.svelte'
-	import StickerDetails from '$lib/StickerDetails.svelte'
+	import StickerDetails from '$lib/Sticker/Details.svelte'
 	import client from '$lib/sanity'
 	import { setContext } from 'svelte'
 	import { selectedSticker } from '$lib/stores'
@@ -28,17 +28,18 @@
 					'original': original.asset->url,
 					source
 				},
-				emotion, meta
+				emotion,
+				meta
 			}
 		`)
 
 		const emojis = await client.fetch(`
-			*[_type == 'sticker'] | order(meta.date desc).emotion.emoji
+			*[_type == 'sticker'].emotion.emoji
 		`)
 		return {
 			props: {
 				stickers,
-				emojis,
+				emojis: emojis.sort(),
 			}
 		}
 	}
