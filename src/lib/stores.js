@@ -1,5 +1,7 @@
 import { writable } from 'svelte/store'
 
-export const selectedSticker = writable(false)
+export const randomSticker = writable(false)
 
 export const selectedEmoji = writable(false)
+
+export const selectedSticker = writable(false)

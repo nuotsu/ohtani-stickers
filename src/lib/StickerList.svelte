@@ -1,7 +1,7 @@
 <ul>
 	{#each filteredStickers() as sticker (sticker)}
-		<li class="h-full hover:relative" transition:scale={animOptions} animate:flip={animOptions}>
-			<Sticker {...sticker} />
+		<li>
+			<Sticker {sticker} />
 		</li>
 	{/each}
 </ul>
@@ -17,20 +17,14 @@
 </style>
 
 <script>
-	import { scale } from 'svelte/transition'
-	import { flip } from 'svelte/animate'
 	import Sticker from '$lib/Sticker.svelte'
-	import { selectedEmoji, selectedSticker } from '$lib/stores'
-
-	const animOptions = {
-		duration: 400
-	}
+	import { selectedEmoji, randomSticker } from '$lib/stores'
 
 	export let stickers
 
 	$: filteredStickers = () => {
-		if (typeof $selectedSticker === 'number') {
-			return [stickers[$selectedSticker]]
+		if (typeof $randomSticker === 'number') {
+			return [stickers[$randomSticker]]
 		}
 
 		if (!!$selectedEmoji) {

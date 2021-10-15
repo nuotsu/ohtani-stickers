@@ -1,12 +1,10 @@
 <div class="root">
-	<figure data-emoji={emotion.emoji}>
+	<figure data-emoji={sticker.emotion.emoji} on:click={handleClick}>
 		<img
-			src={urlFor(image.face).height(200).auto('format').url()}
-			alt={meta.description || `${emotion.emoji} ${stars}`}
+			src={urlFor(sticker.image.face).height(200).auto('format').url()}
+			alt={sticker.meta.description || `${sticker.emotion.emoji} ${stars}`}
 		/>
 	</figure>
-
-	<Details/>
 </div>
 
 <style lang="postcss">
@@ -17,14 +15,9 @@
 		height: 100%;
 	}
 
-	.root:not(:hover) :global(.sticker-details) {
-		pointer-events: none;
-		opacity: 0;
-		transform: scale(0.5);
-	}
-
 	figure {
 		flex: 1 1;
+		cursor: pointer;
 		position: relative;
 		display: flex;
 		align-items: center;
@@ -49,18 +42,17 @@
 </style>
 
 <script>
-	import { setContext } from 'svelte'
-	import Details from '$lib/Details.svelte'
 	import { urlFor } from '$lib/sanity'
+	import { selectedSticker } from '$lib/stores'
 
-	export let image, emotion, meta
+	export let sticker
 
-	const stars = new Array(emotion.level).fill`★`.join``
+	const stars = new Array(sticker.emotion.level).fill`★`.join``
 
-	setContext('sticker', {
-		image,
-		emotion,
-		meta,
-		stars,
-	})
+	function handleClick() {
+		selectedSticker.set({
+			...sticker,
+			stars,
+		})
+	}
 </script>

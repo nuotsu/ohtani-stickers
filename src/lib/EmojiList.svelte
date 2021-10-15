@@ -23,13 +23,18 @@
 
 	button {
 		user-select: none;
+		outline: none;
 
-		@apply p-1 rounded hover:bg-gray focus:bg-red;
+		@apply p-1 rounded hover:bg-gray focus:bg-gray;
+	}
+
+	button.active {
+		@apply bg-red;
 	}
 </style>
 
 <script>
-	import { selectedEmoji, selectedSticker } from '$lib/stores'
+	import { selectedEmoji, randomSticker, selectedSticker } from '$lib/stores'
 	import { getContext } from 'svelte'
 
 	const stickerCount = getContext('stickerCount')
@@ -39,10 +44,12 @@
 	function randomize() {
 		selectedEmoji.set(false)
 		const random = Math.floor(Math.random() * stickerCount)
-		selectedSticker.set(random)
+		randomSticker.set(random)
+		selectedSticker.set(false)
 	}
 
 	function handleClick(emoji) {
+		randomSticker.set(false)
 		selectedSticker.set(false)
 
 		if ($selectedEmoji === emoji) {
