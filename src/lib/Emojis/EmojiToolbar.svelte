@@ -1,5 +1,5 @@
 <div class="root">
-	<List {expand} />
+	<EmojiList {expand} />
 
 	<div class="more" class:expand>
 		<button on:click={() => expand = !expand}>
@@ -41,7 +41,7 @@
 </style>
 
 <script>
-	import List from './List.svelte'
+	import EmojiList from './EmojiList.svelte'
 
 	let expand = false
 </script>

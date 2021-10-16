@@ -66,7 +66,9 @@
 	import { selectedSticker } from '$lib/stores'
 	import runes from 'runes'
 
-	export let sticker
+	export let sticker, showDetails
 
 	let emojis = runes(sticker.emotion.emoji).reverse()
+
+	$: !!showDetails && selectedSticker.set(sticker)
 </script>

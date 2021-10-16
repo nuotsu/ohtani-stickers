@@ -3,19 +3,13 @@
 
 	{#if typeof $randomSticker == 'number'}
 		<button
-			on:click={() => randomSticker.set(false)}
+			on:click={closeRandom}
 			transition:scale
 		>❎</button>
 	{/if}
 
 	{#each [...new Set(emojis)] as emoji}
-		<button
-			class="emoji transition-opacity"
-			class:opacity-30={!!$selectedEmoji && !($selectedEmoji === emoji)}
-			on:click={() => handleClick(emoji)}
-		>
-			{emoji}
-		</button>
+		<Emoji {emoji} closeDetails />
 	{/each}
 </div>
 
@@ -48,6 +42,7 @@
 	import { selectedEmoji, randomSticker, selectedSticker } from '$lib/stores'
 	import { getContext } from 'svelte'
 	import { scale } from 'svelte/transition'
+	import Emoji from './Emoji.svelte'
 
 	export let expand
 
@@ -61,14 +56,8 @@
 		selectedSticker.set(false)
 	}
 
-	function handleClick(emoji) {
+	function closeRandom() {
 		randomSticker.set(false)
 		selectedSticker.set(false)
-
-		if ($selectedEmoji === emoji) {
-			selectedEmoji.set(false)
-		} else {
-			selectedEmoji.set(emoji)
-		}
 	}
 </script>

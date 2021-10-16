@@ -1,7 +1,7 @@
 <ul>
 	{#each filteredStickers() as sticker (sticker)}
-		<li class:single={typeof $randomSticker === 'number'}>
-			<Sticker {sticker} />
+		<li class:random>
+			<Sticker {sticker} showDetails={random} />
 		</li>
 	{/each}
 </ul>
@@ -16,7 +16,7 @@
 		@apply px-4 gap-4;
 	}
 
-	.single {
+	.random {
 		grid-column: 1 / -1;
 		max-width: 200px;
 
@@ -31,7 +31,7 @@
 </style>
 
 <script>
-	import Sticker from '$lib/Sticker/Sticker.svelte'
+	import Sticker from '$lib/Stickers/Sticker.svelte'
 	import { selectedEmoji, randomSticker } from '$lib/stores'
 
 	export let stickers
@@ -47,4 +47,6 @@
 
 		else return stickers
 	}
+
+	$: random = typeof $randomSticker === 'number'
 </script>

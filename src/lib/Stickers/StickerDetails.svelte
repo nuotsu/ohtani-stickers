@@ -2,7 +2,11 @@
 	<button class="close" on:click={() => selectedSticker.set(false)}>×</button>
 
 	<div class="title gap-2 pr-1">
-		<p class="text-2xl text-red">{emotion.emoji}</p>
+		<p class="text-2xl text-red">
+			{#each runes(emotion.emoji) as emoji}
+				<Emoji {emoji} />
+			{/each}
+		</p>
 
 		<figure class="preview relative" in:scale={{ delay: 300 }}>
 			<img
@@ -13,7 +17,7 @@
 		</figure>
 	</div>
 
-	<Actions/>
+	<StickerActions/>
 
 	<div class="meta">
 		<time datetime={meta.date} class="text-gray-400">{formatDate(meta.date)}</time>
@@ -80,9 +84,11 @@
 	import { slide, scale } from 'svelte/transition'
 	import { selectedSticker } from '$lib/stores'
 	import { urlFor } from '$lib/sanity'
-	import Actions from './Actions.svelte'
+	import Emoji from '$lib/Emojis/Emoji.svelte'
+	import StickerActions from './StickerActions.svelte'
+	import runes from 'runes'
 
-	export let _id, image, emotion, meta
+	export let image, emotion, meta
 
 	function formatDate(date) {
 		return new Date(date).toLocaleDateString('en-US', {

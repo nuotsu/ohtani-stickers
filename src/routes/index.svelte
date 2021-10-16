@@ -6,9 +6,9 @@
 {/if}
 
 <script>
-	import EmojiToolbar from '$lib/Emojis/Toolbar.svelte'
+	import EmojiToolbar from '$lib/Emojis/EmojiToolbar.svelte'
 	import StickerList from '$lib/StickerList.svelte'
-	import StickerDetails from '$lib/Sticker/Details.svelte'
+	import StickerDetails from '$lib/Stickers/StickerDetails.svelte'
 	import client from '$lib/sanity'
 	import { setContext } from 'svelte'
 	import { selectedSticker } from '$lib/stores'
