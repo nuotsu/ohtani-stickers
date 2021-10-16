@@ -1,7 +1,7 @@
 <EmojiToolbar {emojis} />
 <StickerList {stickers} />
 
-{#if $selectedSticker}
+{#if !!$selectedSticker}
 	<StickerDetails {...$selectedSticker} />
 {/if}
 

@@ -1,35 +1,32 @@
-{#key _id}
-	<div class="root" transition:slide={{ y: -100 }}>
-		<button class="close" on:click={() => selectedSticker.set(false)}>×</button>
+<div class="root" transition:slide={{ y: -100 }}>
+	<button class="close" on:click={() => selectedSticker.set(false)}>×</button>
 
-		<div class="title gap-2 pr-1">
-			<p class="text-2xl text-red">{emotion.emoji}</p>
+	<div class="title gap-2 pr-1">
+		<p class="text-2xl text-red">{emotion.emoji}</p>
 
-			<figure class="preview relative" transition:scale={{ delay: 600 }}>
-				<img
-					src={urlFor(image.face).height(100).url()}
-					alt={meta.description || emotion.emoji}
-					draggable="false"
-				/>
-			</figure>
-		</div>
-
-		<Actions/>
-
-		<div class="meta">
-			<time datetime={meta.date} class="text-gray-400">{formatDate(meta.date)}</time>
-			{#if meta.description}
-				<p class="mt-2">{meta.description}</p>
-			{/if}
-		</div>
+		<figure class="preview relative" in:scale={{ delay: 300 }}>
+			<img
+				src={urlFor(image.face).height(100).url()}
+				alt={meta.description || emotion.emoji}
+				draggable="false"
+			/>
+		</figure>
 	</div>
-{/key}
+
+	<Actions/>
+
+	<div class="meta">
+		<time datetime={meta.date} class="text-gray-400">{formatDate(meta.date)}</time>
+		{#if meta.description}
+			<p class="mt-2">{meta.description}</p>
+		{/if}
+	</div>
+</div>
 
 <style lang="postcss">
 	.root {
 		@apply
-			p-4 rounded-t-lg shadow-2xl border border-gray-border
-			bg-white bg-opacity-90 backdrop-filter backdrop-blur-sm;
+			p-4 rounded-t-lg shadow-2xl border border-gray-border bg-white;
 
 		position: fixed;
 		left: 50%;

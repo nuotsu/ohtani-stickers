@@ -1,5 +1,8 @@
 <div class="root">
-	<figure data-emoji={sticker.emotion.emoji} on:click={() => selectedSticker.set(sticker)}>
+	<figure
+		data-emoji={sticker.emotion.emoji}
+		on:click={() => selectedSticker.set(sticker)}
+	>
 		<img
 			src={urlFor(sticker.image.face).height(200).auto('format').url()}
 			alt={sticker.meta.description || sticker.emotion.emoji}

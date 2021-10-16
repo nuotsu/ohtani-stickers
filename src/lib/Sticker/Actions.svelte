@@ -21,7 +21,7 @@
 		align-items: center;
 		justify-content: center;
 
-		@apply gap-2 p-2 rounded bg-gray-200 bg-opacity-50;
+		@apply gap-2 p-2 rounded bg-gray-200;
 	}
 </style>
 
