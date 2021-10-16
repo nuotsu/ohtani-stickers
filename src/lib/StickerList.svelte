@@ -11,6 +11,7 @@
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
 		align-items: center;
+		padding-bottom: env(safe-area-inset-bottom);
 
 		@apply px-4 gap-4;
 	}
@@ -34,7 +35,7 @@
 		}
 
 		if (!!$selectedEmoji) {
-			return stickers.filter(({ emotion }) => emotion.emoji === $selectedEmoji)
+			return stickers.filter(({ emotion }) => emotion.emoji.includes($selectedEmoji))
 		}
 
 		else return stickers

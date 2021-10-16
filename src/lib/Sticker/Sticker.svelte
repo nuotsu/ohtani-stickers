@@ -4,6 +4,12 @@
 			src={urlFor(sticker.image.face).height(200).auto('format').url()}
 			alt={sticker.meta.description || sticker.emotion.emoji}
 		/>
+
+		<div class="emojis">
+			{#each emojis as emoji}
+				<span class="emoji">{emoji}</span>
+			{/each}
+		</div>
 	</figure>
 </div>
 
@@ -23,18 +29,26 @@
 		align-items: center;
 	}
 
-	figure::after {
-		content: attr(data-emoji);
+	.emojis {
 		position: absolute;
-		z-index: -1;
 		right: 0;
 		bottom: 0;
+		display: flex;
 
 		@apply text-2xl transition-opacity;
 	}
 
-	figure:not(:hover)::after {
+	.emoji {
+		transition: margin-left 0.2s;
+	}
+
+	figure:not(:hover) .emojis {
 		opacity: 0.3;
+		z-index: -1;
+	}
+
+	figure:not(:hover) .emoji {
+		margin-left: -0.8ch;
 	}
 
 	img {
@@ -47,6 +61,9 @@
 <script>
 	import { urlFor } from '$lib/sanity'
 	import { selectedSticker } from '$lib/stores'
+	import runes from 'runes'
 
 	export let sticker
+
+	let emojis = runes(sticker.emotion.emoji).reverse()
 </script>

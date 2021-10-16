@@ -27,7 +27,9 @@
 
 <style lang="postcss">
 	.root {
-		@apply p-4 rounded-t-lg shadow-lg border border-gray-border bg-white;
+		@apply
+			p-4 rounded-t-lg shadow-2xl border border-gray-border
+			bg-white bg-opacity-90 backdrop-filter backdrop-blur-sm;
 
 		position: fixed;
 		left: 50%;

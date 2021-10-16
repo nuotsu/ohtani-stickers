@@ -1,6 +1,13 @@
 <div class="root">
 	<button on:click={randomize}>🔀</button>
 
+	{#if typeof $randomSticker == 'number'}
+		<button
+			on:click={() => randomSticker.set(false)}
+			transition:scale
+		>❎</button>
+	{/if}
+
 	{#each [...new Set(emojis)] as emoji}
 		<button
 			class="emoji transition-opacity"
@@ -21,8 +28,8 @@
 		text-align: center;
 
 		@apply
-			gap-2 my-2 p-1 top-2 rounded-md text-2xl max-w-max mx-auto no-scrollbar
-			backdrop-filter backdrop-blur-sm bg-gray-100 bg-opacity-90
+			gap-2 my-2 p-1 top-2 max-w-screen-sm mx-auto rounded-md text-2xl no-scrollbar
+			bg-gray-100 bg-opacity-90 backdrop-blur-sm
 			before:m-auto after:m-auto
 		;
 	}
@@ -37,6 +44,7 @@
 <script>
 	import { selectedEmoji, randomSticker, selectedSticker } from '$lib/stores'
 	import { getContext } from 'svelte'
+	import { scale } from 'svelte/transition'
 
 	const stickerCount = getContext('stickerCount')
 

@@ -19,6 +19,8 @@
 </script>
 
 <script context="module">
+	import runes from 'runes'
+
 	export async function load() {
 		const stickers = await client.fetch(`
 			*[_type == 'sticker'] | order(meta.date desc) {
@@ -36,10 +38,11 @@
 		const emojis = await client.fetch(`
 			*[_type == 'sticker'].emotion.emoji
 		`)
+
 		return {
 			props: {
 				stickers,
-				emojis: emojis.sort(),
+				emojis: [...new Set(runes(emojis.join``))].sort(),
 			}
 		}
 	}
