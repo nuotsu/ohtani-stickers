@@ -1,25 +1,23 @@
-<Wrapper>
-	<div class="root">
-		<button on:click={randomize}>🔀</button>
+<div class="root" class:expand>
+	<button on:click={randomize}>🔀</button>
 
-		{#if typeof $randomSticker == 'number'}
-			<button
-				on:click={() => randomSticker.set(false)}
-				transition:scale
-			>❎</button>
-		{/if}
+	{#if typeof $randomSticker == 'number'}
+		<button
+			on:click={() => randomSticker.set(false)}
+			transition:scale
+		>❎</button>
+	{/if}
 
-		{#each [...new Set(emojis)] as emoji}
-			<button
-				class="emoji transition-opacity"
-				class:opacity-30={!!$selectedEmoji && !($selectedEmoji === emoji)}
-				on:click={() => handleClick(emoji)}
-			>
-				{emoji}
-			</button>
-		{/each}
-	</div>
-</Wrapper>
+	{#each [...new Set(emojis)] as emoji}
+		<button
+			class="emoji transition-opacity"
+			class:opacity-30={!!$selectedEmoji && !($selectedEmoji === emoji)}
+			on:click={() => handleClick(emoji)}
+		>
+			{emoji}
+		</button>
+	{/each}
+</div>
 
 <style lang="postcss">
 	.root {
@@ -27,9 +25,16 @@
 		overflow-x: auto;
 
 		@apply
-			gap-2 p-1 no-scrollbar
-			before:m-auto after:m-auto
+			gap-x-2 py-1 px-2 no-scrollbar
 		;
+	}
+
+	.root:not(.expand) {
+		@apply before:m-auto after:m-auto;
+	}
+
+	.root.expand {
+		flex-wrap: wrap;
 	}
 
 	button {
@@ -43,10 +48,10 @@
 	import { selectedEmoji, randomSticker, selectedSticker } from '$lib/stores'
 	import { getContext } from 'svelte'
 	import { scale } from 'svelte/transition'
-	import Wrapper from './Wrapper.svelte'
 
-	export let emojis
+	export let expand
 
+	const emojis = getContext('emojis')
 	const stickerCount = getContext('stickerCount')
 
 	function randomize() {

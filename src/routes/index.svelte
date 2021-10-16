@@ -1,4 +1,4 @@
-<EmojiList {emojis} />
+<EmojiToolbar {emojis} />
 <StickerList {stickers} />
 
 {#if $selectedSticker}
@@ -6,7 +6,7 @@
 {/if}
 
 <script>
-	import EmojiList from '$lib/Emojis/List.svelte'
+	import EmojiToolbar from '$lib/Emojis/Toolbar.svelte'
 	import StickerList from '$lib/StickerList.svelte'
 	import StickerDetails from '$lib/Sticker/Details.svelte'
 	import client from '$lib/sanity'
@@ -15,6 +15,7 @@
 
 	export let stickers, emojis
 
+	setContext('emojis', emojis)
 	setContext('stickerCount', stickers.length)
 </script>
 
