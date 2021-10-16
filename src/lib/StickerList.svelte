@@ -1,6 +1,6 @@
 <ul>
 	{#each filteredStickers() as sticker (sticker)}
-		<li>
+		<li class:single={typeof $randomSticker === 'number'}>
 			<Sticker {sticker} />
 		</li>
 	{/each}
@@ -14,6 +14,13 @@
 		padding-bottom: env(safe-area-inset-bottom);
 
 		@apply px-4 gap-4;
+	}
+
+	.single {
+		grid-column: 1 / -1;
+		max-width: 200px;
+
+		@apply mx-auto;
 	}
 
 	@media (max-width: 475px) {

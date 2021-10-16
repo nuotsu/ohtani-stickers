@@ -6,7 +6,7 @@
 {/if}
 
 <script>
-	import EmojiList from '$lib/EmojiList.svelte'
+	import EmojiList from '$lib/Emojis/List.svelte'
 	import StickerList from '$lib/StickerList.svelte'
 	import StickerDetails from '$lib/Sticker/Details.svelte'
 	import client from '$lib/sanity'

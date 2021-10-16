@@ -1,35 +1,33 @@
-<div class="root">
-	<button on:click={randomize}>🔀</button>
+<Wrapper>
+	<div class="root">
+		<button on:click={randomize}>🔀</button>
 
-	{#if typeof $randomSticker == 'number'}
-		<button
-			on:click={() => randomSticker.set(false)}
-			transition:scale
-		>❎</button>
-	{/if}
+		{#if typeof $randomSticker == 'number'}
+			<button
+				on:click={() => randomSticker.set(false)}
+				transition:scale
+			>❎</button>
+		{/if}
 
-	{#each [...new Set(emojis)] as emoji}
-		<button
-			class="emoji transition-opacity"
-			class:opacity-30={!!$selectedEmoji && !($selectedEmoji === emoji)}
-			on:click={() => handleClick(emoji)}
-		>
-			{emoji}
-		</button>
-	{/each}
-</div>
+		{#each [...new Set(emojis)] as emoji}
+			<button
+				class="emoji transition-opacity"
+				class:opacity-30={!!$selectedEmoji && !($selectedEmoji === emoji)}
+				on:click={() => handleClick(emoji)}
+			>
+				{emoji}
+			</button>
+		{/each}
+	</div>
+</Wrapper>
 
 <style lang="postcss">
 	.root {
-		position: sticky;
-		z-index: 1;
 		display: flex;
 		overflow-x: auto;
-		text-align: center;
 
 		@apply
-			gap-2 my-2 p-1 top-2 max-w-screen-sm mx-auto rounded-md text-2xl no-scrollbar
-			bg-gray-100 bg-opacity-90 backdrop-blur-sm
+			gap-2 p-1 no-scrollbar
 			before:m-auto after:m-auto
 		;
 	}
@@ -45,10 +43,11 @@
 	import { selectedEmoji, randomSticker, selectedSticker } from '$lib/stores'
 	import { getContext } from 'svelte'
 	import { scale } from 'svelte/transition'
-
-	const stickerCount = getContext('stickerCount')
+	import Wrapper from './Wrapper.svelte'
 
 	export let emojis
+
+	const stickerCount = getContext('stickerCount')
 
 	function randomize() {
 		selectedEmoji.set(false)
