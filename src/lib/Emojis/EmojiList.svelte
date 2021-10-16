@@ -2,10 +2,7 @@
 	<button on:click={randomize}>🔀</button>
 
 	{#if typeof $randomSticker == 'number'}
-		<button
-			on:click={closeRandom}
-			transition:scale
-		>❎</button>
+		<button on:click={closeRandom} transition:scale>❎</button>
 	{/if}
 
 	{#each [...new Set(emojis)] as emoji}
@@ -15,16 +12,12 @@
 
 <style lang="postcss">
 	.root {
-		display: flex;
-		overflow-x: auto;
-
-		@apply
-			gap-x-2 py-1 px-2 no-scrollbar
-		;
+		@apply flex overflow-x-auto gap-x-2 py-1 px-2 no-scrollbar;
 	}
 
-	.root:not(.expand) {
-		@apply before:m-auto after:m-auto;
+	.root:not(.expand)::after {
+		content: '↩️';
+		opacity: 0;
 	}
 
 	.root.expand {
@@ -32,9 +25,7 @@
 	}
 
 	button {
-		user-select: none;
-
-		@apply rounded;
+		@apply select-none rounded;
 	}
 </style>
 

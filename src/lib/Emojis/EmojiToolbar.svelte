@@ -30,9 +30,7 @@
 	}
 
 	.more:not(.expand) {
-		top: 0;
-
-		@apply p-1 pl-6 bg-gradient-to-l from-gray-100 via-gray-100;
+		@apply top-0 p-1 pl-6 bg-gradient-to-l from-gray-100 via-gray-100;
 	}
 
 	.more.expand {
