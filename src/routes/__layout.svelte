@@ -8,6 +8,8 @@
 	<slot></slot>
 </main>
 
+<Footer/>
+
 <style global lang="postcss">
 	@tailwind base;
 	@tailwind components;
@@ -31,8 +33,20 @@
 			text-decoration-thickness: 2px;
 		}
 	}
+
+	:global(#svelte) {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
+
+	main {
+		flex: 1 1;
+		width: 100%;
+	}
 </style>
 
 <script>
 	import Header from '$lib/Header.svelte'
+	import Footer from '$lib/Footer.svelte'
 </script>

@@ -2,7 +2,7 @@
 	<a href={downloadUrl} class="action text-red">
 		<IconDownload/> Download
 	</a>
-	<a href={image.source || image.original} {...newtab} class="action text-red">
+	<a href={originalUrl} {...newtab} class="action text-red">
 		<IconExternalLink/> Original
 	</a>
 </p>
@@ -26,15 +26,16 @@
 </style>
 
 <script>
-	import { selectedSticker } from '$lib/stores'
 	import newtab from '$lib/newtab'
 	import IconDownload from '$lib/icons/Download.svelte'
 	import IconExternalLink from '$lib/icons/ExternalLink.svelte'
 	import { urlFor } from '$lib/sanity'
 
-	const { image, emotion } = $selectedSticker
+	export let image, emotion
 
-	const downloadUrl = urlFor(image.face)
+	$: originalUrl = image.source || image.original
+
+	$: downloadUrl = urlFor(image.face)
 		.forceDownload(`shohei-ohtani-${emotion.emoji}`)
 		.url()
 </script>

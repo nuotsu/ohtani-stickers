@@ -10,14 +10,14 @@
 
 		<figure class="preview relative" in:scale={{ delay: 300 }}>
 			<img
-				src={urlFor(image.face).height(100).url()}
+				src={previewUrl}
 				alt={meta.description || emotion.emoji}
 				draggable="false"
 			/>
 		</figure>
 	</div>
 
-	<StickerActions/>
+	<StickerActions {image} {emotion} />
 
 	<div class="meta">
 		<time datetime={meta.date} class="text-gray-400">{formatDate(meta.date)}</time>
@@ -89,6 +89,8 @@
 	import runes from 'runes'
 
 	export let image, emotion, meta
+
+	$: previewUrl = urlFor(image.face).height(100).url()
 
 	function formatDate(date) {
 		return new Date(date).toLocaleDateString('en-US', {
