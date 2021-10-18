@@ -25,7 +25,7 @@
 
 	@media (max-width: 475px) {
 		ul {
-			@apply grid-cols-3;
+			@apply grid-cols-4;
 		}
 	}
 </style>

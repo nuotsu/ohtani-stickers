@@ -21,6 +21,10 @@ module.exports = {
 				}
 			},
 		},
+		fontFamily: {
+			sans: 'muli, sans-serif',
+			serif: 'fp-dancer-serif, serif',
+		},
 		screens: {
 			'xs': '475px',
 			...defaultTheme.screens,
