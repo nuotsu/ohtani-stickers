@@ -4,7 +4,7 @@
 
 <Header/>
 
-<main class="max-w-7xl mx-auto px-4">
+<main class="flex-1 w-full max-w-7xl mx-auto p-4 pt-0">
 	<slot></slot>
 </main>
 
@@ -41,12 +41,7 @@
 	}
 
 	body {
-		@apply bg-gray-border;
-	}
-
-	main {
-		flex: 1 1;
-		width: 100%;
+		@apply bg-gray-light;
 	}
 </style>
 

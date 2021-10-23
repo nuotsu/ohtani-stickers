@@ -17,7 +17,7 @@ module.exports = {
 				},
 				gray: {
 					DEFAULT: '#c4cdd3',
-					border: '#ddd',
+					light: '#ddd',
 				}
 			},
 		},
