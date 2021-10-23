@@ -26,8 +26,12 @@ module.exports = {
 			serif: 'fp-dancer-serif, serif',
 		},
 		screens: {
-			'xs': '475px',
-			...defaultTheme.screens,
+			'sm': { max: '475px' },
+			'sm+': { min: '476px' },
+			'md': { max: '768px' },
+			'md+': { min: '769px' },
+			'lg': { max: '1024px' },
+			'lg+': { min: '1024px' },
 		},
 		container: {
 			center: true,

@@ -15,7 +15,7 @@
 		overflow: hidden;
 
 		@apply
-			my-2 top-2 max-w-screen-sm mx-auto rounded-md text-2xl
+			top-2 max-w-screen-md my-2 mx-auto rounded-md text-2xl
 			bg-gray-100 bg-opacity-90 backdrop-blur-sm
 		;
 	}

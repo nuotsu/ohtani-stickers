@@ -1,4 +1,4 @@
-<div class="root" class:expand>
+<div class="root flex overflow-x-auto gap-x-2 py-1 px-2 no-scrollbar" class:flex-wrap={expand}>
 	<button on:click={randomize}>🔀</button>
 
 	{#if typeof $randomSticker == 'number'}
@@ -11,22 +11,12 @@
 </div>
 
 <style lang="postcss">
-	.root {
-		@apply flex overflow-x-auto gap-x-2 py-1 px-2 no-scrollbar;
-	}
-
 	.root:not(.expand)::after {
 		content: '↩️';
 		opacity: 0;
 	}
 
-	.root.expand {
-		flex-wrap: wrap;
-	}
-
-	button {
-		@apply select-none rounded;
-	}
+	button { @apply select-none rounded; }
 </style>
 
 <script>

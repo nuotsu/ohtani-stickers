@@ -1,6 +1,6 @@
-<ul>
+<ul class="grid items-center">
 	{#each filteredStickers() as sticker (sticker)}
-		<li class:random>
+		<li class="h-full" class:random>
 			<Sticker {sticker} showDetails={random} />
 		</li>
 	{/each}
@@ -8,25 +8,14 @@
 
 <style lang="postcss">
 	ul {
-		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-		align-items: center;
 		padding-bottom: env(safe-area-inset-bottom);
-
-		@apply px-4 gap-4;
 	}
 
-	.random {
-		grid-column: 1 / -1;
-		max-width: 200px;
-
-		@apply mx-auto;
-	}
+	.random { @apply col-span-full max-w-[200px] mx-auto; }
 
 	@media (max-width: 475px) {
-		ul {
-			@apply grid-cols-4;
-		}
+		ul { @apply grid-cols-4; }
 	}
 </style>
 

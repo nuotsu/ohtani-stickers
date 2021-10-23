@@ -4,7 +4,7 @@
 
 <Header/>
 
-<main class="max-w-screen-xl mx-auto px-2 md:px-4">
+<main class="max-w-screen-xl mx-auto px-4">
 	<slot></slot>
 </main>
 
@@ -38,6 +38,10 @@
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
+	}
+
+	body {
+		@apply bg-gray-border;
 	}
 
 	main {

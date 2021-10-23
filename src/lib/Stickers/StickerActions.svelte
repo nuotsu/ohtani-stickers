@@ -1,28 +1,14 @@
-<p class="actions">
-	<a href={downloadUrl} class="action text-red">
+<p class="flex flex-wrap justify-evenly gap-2 mt-2">
+	<a href={downloadUrl} class="action">
 		<IconDownload/> Download
 	</a>
-	<a href={originalUrl} {...newtab} class="action text-red">
+	<a href={originalUrl} {...newtab} class="action">
 		<IconExternalLink/> Original
 	</a>
 </p>
 
 <style lang="postcss">
-	.actions {
-		display: flex;
-		justify-content: space-evenly;
-
-		@apply gap-2 mt-2;
-	}
-
-	.action {
-		flex: 1 1;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-
-		@apply gap-2 p-2 rounded bg-gray-200;
-	}
+	.action { @apply flex-1 flex items-center justify-center gap-2 p-2 rounded bg-white text-red; }
 </style>
 
 <script>

@@ -1,14 +1,22 @@
-<div class="root">
+<div
+	class="
+		root cursor-pointer relative flex flex-col h-full p-2 rounded-md transition-colors select-none
+		hover:bg-white hover:bg-opacity-40
+	"
+	on:click={() => selectedSticker.set(sticker)}
+>
 	<figure
+		class="flex-1 relative flex items-center"
 		data-emoji={sticker.emotion.emoji}
-		on:click={() => selectedSticker.set(sticker)}
 	>
 		<img
+			class="mx-auto drop-shadow-md"
 			src={urlFor(sticker.image.face).height(200).auto('format').url()}
 			alt={sticker.meta.description || sticker.emotion.emoji}
+			draggable="false"
 		/>
 
-		<div class="emojis">
+		<div class="emojis absolute right-0 bottom-0 flex text-2xl transition-opacity">
 			{#each emojis as emoji}
 				<span class="emoji">{emoji}</span>
 			{/each}
@@ -17,48 +25,10 @@
 </div>
 
 <style lang="postcss">
-	.root {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		height: 100%;
-	}
+	.root:not(:hover) .emojis { @apply opacity-30 z-[-1] }
+	.root:not(:hover) .emoji { @apply ml-[-0.8ch]; }
 
-	figure {
-		flex: 1 1;
-		cursor: pointer;
-		position: relative;
-		display: flex;
-		align-items: center;
-	}
-
-	.emojis {
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		display: flex;
-
-		@apply text-2xl transition-opacity;
-	}
-
-	.emoji {
-		transition: margin-left 0.2s;
-	}
-
-	figure:not(:hover) .emojis {
-		opacity: 0.3;
-		z-index: -1;
-	}
-
-	figure:not(:hover) .emoji {
-		margin-left: -0.8ch;
-	}
-
-	img {
-		margin-inline: auto;
-
-		@apply drop-shadow-md;
-	}
+	.emoji { transition: margin-left 0.2s; }
 </style>
 
 <script>

@@ -7,7 +7,7 @@
 
 <script>
 	import EmojiToolbar from '$lib/Emojis/EmojiToolbar.svelte'
-	import StickerList from '$lib/StickerList.svelte'
+	import StickerList from '$lib/Stickers/StickerList.svelte'
 	import StickerDetails from '$lib/Stickers/StickerDetails.svelte'
 	import client from '$lib/sanity'
 	import { setContext } from 'svelte'
