@@ -25,7 +25,7 @@
 </div>
 
 <style lang="postcss">
-	.root:not(:hover) .emojis { @apply opacity-30 z-[-1] }
+	.root:not(:hover) .emojis { @apply opacity-40 z-[-1] }
 	.root:not(:hover) .emoji { @apply ml-[-0.8ch]; }
 
 	.emoji { transition: margin-left 0.2s; }

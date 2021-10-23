@@ -4,7 +4,7 @@
 
 <Header/>
 
-<main class="max-w-screen-xl mx-auto px-4">
+<main class="max-w-7xl mx-auto px-4">
 	<slot></slot>
 </main>
 

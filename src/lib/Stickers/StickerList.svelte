@@ -1,4 +1,4 @@
-<ul class="grid items-center">
+<ul class="grid gap-[1px] items-center">
 	{#each filteredStickers() as sticker (sticker)}
 		<li class="h-full" class:random>
 			<Sticker {sticker} showDetails={random} />
