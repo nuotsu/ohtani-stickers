@@ -20,15 +20,19 @@
 
 	<StickerActions {image} {emotion} />
 
-	<div class="text-sm mt-4">
-		<time datetime={meta.date} class="block uppercase text-xs text-white text-opacity-70">
-			{formatDate(meta.date)}
-		</time>
+	{#if !!meta.date && !!meta.description}
+		<div class="text-sm mt-4">
+			{#if meta.date}
+				<time datetime={meta.date} class="block uppercase text-xs text-white text-opacity-70">
+					{formatDate(meta.date)}
+				</time>
+			{/if}
 
-		{#if meta.description}
-			<p class="mt-2">{meta.description}</p>
-		{/if}
-	</div>
+			{#if meta.description}
+				<p class="mt-2">{meta.description}</p>
+			{/if}
+		</div>
+	{/if}
 </div>
 
 <style lang="postcss">
