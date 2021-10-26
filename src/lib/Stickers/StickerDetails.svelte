@@ -34,7 +34,7 @@
 <style lang="postcss">
 	.root {
 		@apply
-			fixed left-1/2 bottom-0 -translate-x-1/2 w-[400px] sm:w-[calc(100%-2rem)]
+			fixed left-1/2 bottom-0 -translate-x-1/2 w-[400px] sm-:w-[calc(100%-2rem)]
 			p-4 rounded-t-lg shadow-2xl border-2 border-b-0 border-white bg-red text-white;
 
 		padding-bottom: calc(1rem + env(safe-area-inset-bottom));

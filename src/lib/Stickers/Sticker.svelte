@@ -1,7 +1,8 @@
 <div
 	class="
 		root cursor-pointer relative flex flex-col h-full p-2 rounded-md transition-colors select-none
-		hover:bg-white hover:bg-opacity-40
+		hover:bg-gray-lighter hover:bg-opacity-90
+		dark:hover:bg-gray-dark
 	"
 	on:click={() => selectedSticker.set(sticker)}
 >

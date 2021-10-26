@@ -41,7 +41,10 @@
 	}
 
 	body {
-		@apply bg-gray-light;
+		@apply
+			bg-gray-light
+			dark:bg-gray-darker dark:text-white
+		;
 	}
 </style>
 

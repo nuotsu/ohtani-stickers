@@ -3,7 +3,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
 	mode: 'jit',
 	purge: ['./src/**/*.{svelte,html}'],
-	darkMode: false, // or 'media' or 'class'
+	darkMode: 'media', // or 'media' or 'class'
 	theme: {
 		extend: {
 			colors: {
@@ -17,7 +17,10 @@ module.exports = {
 				},
 				gray: {
 					DEFAULT: '#c4cdd3',
+					lighter: '#eee',
 					light: '#ddd',
+					dark: '#313131',
+					darker: '#191919',
 				}
 			},
 		},
@@ -26,15 +29,12 @@ module.exports = {
 			serif: 'fp-dancer-serif, serif',
 		},
 		screens: {
-			'sm': { max: '475px' },
-			'sm+': { min: '476px' },
-			'md': { max: '768px' },
-			'md+': { min: '769px' },
-			'lg': { max: '1024px' },
-			'lg+': { min: '1024px' },
-		},
-		container: {
-			center: true,
+			'sm-': { max: '475px' },
+			'sm': { min: '476px' },
+			'md-': { max: '768px' },
+			'md': { min: '769px' },
+			'lg-': { max: '1024px' },
+			'lg': { min: '1024px' },
 		},
 	},
 	variants: {

@@ -1,6 +1,7 @@
 <div class="
-	root sticky top-2 z-[1] overflow-hidden max-w-4xl mb-2 mx-auto rounded-md
-	text-2xl bg-gray-100 bg-opacity-90 backdrop-blur-sm
+	root sticky top-2 z-[1] overflow-hidden w-full max-w-3xl mx-auto mb-2 rounded-md
+	text-2xl bg-gray-lighter bg-opacity-90 backdrop-blur-sm
+	dark:bg-gray-dark
 ">
 	<EmojiList {expand} />
 
@@ -12,7 +13,12 @@
 </div>
 
 <style lang="postcss">
-	.more:not(.expand) { @apply top-0 p-1 pl-6 bg-gradient-to-l from-gray-100 via-gray-100; }
+	.more:not(.expand) {
+		@apply
+			top-0 p-1 pl-6 bg-gradient-to-l from-gray-lighter via-gray-lighter
+			dark:from-gray-dark dark:via-gray-dark
+		;
+	}
 
 	.more.expand { @apply m-1; }
 </style>
