@@ -1,26 +1,33 @@
 <div class="
 	root sticky top-2 z-[1] overflow-hidden w-full max-w-3xl mx-auto mb-2 rounded-md
 	text-2xl bg-gray-lighter bg-opacity-90 backdrop-blur-sm
-	dark:bg-gray-dark
+	shadow-lg
+	dark:bg-gray-dark dark:bg-opacity-90
 ">
 	<EmojiList {expand} />
 
-	<div class="more absolute right-0 bottom-0 grid place-content-center text-sm" class:expand>
-		<button on:click={() => expand = !expand}>
-			{!expand ? '↩️' : '⤴️'}
-		</button>
-	</div>
+	<button
+		class="more" class:expand
+		on:click={() => expand = !expand}
+		title={expand ? 'Collapse' : 'Expand'}
+	>
+		{!expand ? '↩️' : '⤴️'}
+	</button>
 </div>
 
 <style lang="postcss">
-	.more:not(.expand) {
-		@apply
-			top-0 p-1 pl-6 bg-gradient-to-l from-gray-lighter via-gray-lighter
-			dark:from-gray-dark dark:via-gray-dark
-		;
+	.more {
+		box-shadow: 0 0 0.5rem #313131;
+		@apply grid place-content-center bg-red text-lg;
 	}
 
-	.more.expand { @apply m-1; }
+	.more.expand {
+		@apply w-full rounded-t-md;
+	}
+
+	.more:not(.expand) {
+		@apply absolute top-0 bottom-0 right-0 p-2 rounded-l-md;
+	}
 </style>
 
 <script>

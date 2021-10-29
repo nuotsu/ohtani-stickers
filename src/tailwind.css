@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	.no-scrollbar {
+		-ms-overflow-style: none;	/* IE and Edge */
+		scrollbar-width: none;	/* Firefox */
+	}
+
+	.link {
+		@apply underline active:text-red-dark;
+	}
+
+	.link:hover {
+		text-decoration-thickness: 2px;
+	}
+}
+
+@layer components {
+	.details-action {
+		@apply flex-1 flex items-center justify-center gap-2 p-2 rounded bg-white text-red;
+	}
+}
+
+:global(#svelte) {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+body {
+	@apply
+		bg-gray-light
+		dark:bg-gray-darker dark:text-white
+	;
+}

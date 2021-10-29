@@ -38,8 +38,9 @@
 <style lang="postcss">
 	.root {
 		@apply
-			fixed z-[1] left-1/2 bottom-0 -translate-x-1/2 w-[400px] sm-:w-[calc(100%-2rem)]
-			p-4 rounded-t-lg shadow-2xl border-2 border-b-0 border-white bg-red text-white;
+			fixed z-[1] right-1/2 bottom-0 sm:translate-x-1/2 w-[400px]
+			p-4 rounded-t-2xl shadow-2xl border-2 border-b-0 border-white bg-red text-white
+			sm-:w-[calc(100%-2rem)] sm-:right-0 sm-:rounded-r-none sm-:border-r-0;
 
 		padding-bottom: calc(1rem + env(safe-area-inset-bottom));
 	}

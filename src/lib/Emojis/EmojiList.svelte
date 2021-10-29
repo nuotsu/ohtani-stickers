@@ -1,5 +1,5 @@
-<div class="root flex overflow-x-auto gap-x-2 p-2 no-scrollbar" class:flex-wrap={expand}>
-	<button on:click={randomize}>🔀</button>
+<div class="root flex overflow-x-auto gap-x-2 p-2 no-scrollbar" class:expand>
+	<button on:click={randomize} title="Randomize">🔀</button>
 
 	{#if typeof $randomSticker == 'number'}
 		<button on:click={closeRandom} transition:scale>❎</button>
@@ -14,6 +14,11 @@
 	.root:not(.expand)::after {
 		content: '↩️';
 		opacity: 0;
+	}
+
+	.root.expand {
+		@apply grid;
+		grid-template-columns: repeat(auto-fill, minmax(1em, 1fr));
 	}
 
 	button { @apply select-none rounded; }
