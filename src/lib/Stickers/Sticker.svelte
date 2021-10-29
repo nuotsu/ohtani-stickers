@@ -12,8 +12,9 @@
 	>
 		<img
 			class="mx-auto drop-shadow-md"
-			src={urlFor(sticker.image.face).height(200).auto('format').url()}
+			src={stickerUrl}
 			alt={sticker.meta.description || sticker.emotion.emoji}
+			height="200"
 			draggable="false"
 		/>
 
@@ -37,9 +38,12 @@
 	import { selectedSticker } from '$lib/stores'
 	import runes from 'runes'
 
-	export let sticker, showDetails
+	export let sticker
+
+	let stickerUrl = urlFor(sticker.image.face)
+		.height(200)
+		.auto('format')
+		.url()
 
 	let emojis = runes(sticker.emotion.emoji).reverse()
-
-	$: !!showDetails && selectedSticker.set(sticker)
 </script>

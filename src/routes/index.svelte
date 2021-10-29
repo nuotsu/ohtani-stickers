@@ -28,7 +28,8 @@
 				_id,
 				image {
 					face,
-					'original': original.asset->url,
+					original,
+					'originalUrl': original.asset->url,
 					source
 				},
 				emotion,

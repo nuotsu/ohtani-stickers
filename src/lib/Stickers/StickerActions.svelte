@@ -1,27 +1,40 @@
-<p class="flex flex-wrap justify-evenly gap-2 mt-2">
+<p class="flex flex-wrap items-end justify-evenly gap-2">
 	{#await prepareShareData(downloadUrl)}
-		<button class="details-action opacity-60" disabled>
-			Loading...
-		</button>
+		<Action>
+			<button class="details-action opacity-60" disabled>
+				Loading...
+			</button>
+		</Action>
+
 	{:then shareData}
 		{#if navigator.canShare && navigator.canShare(shareData)}
-			<button class="details-action" on:click={() => navigator.share(shareData)}>
-				<IconShare/> Share
-			</button>
+			<Action image={previewImage(image.face)}>
+				<button class="details-action" on:click={() => navigator.share(shareData)}>
+					<IconShare/> Share
+				</button>
+			</Action>
+
 		{:else}
-			<a href={downloadUrl} class="details-action">
-				<IconDownload/> Download
-			</a>
+			<Action image={previewImage(image.face)}>
+				<a href={downloadUrl} class="details-action">
+					<IconDownload/> Download
+				</a>
+			</Action>
 		{/if}
 	{/await}
 
-	<a href={originalUrl} {...newtab} class="details-action">
-		<IconExternalLink/> Original
-	</a>
+	{#key originalUrl}
+		<Action image={previewImage(image.original)} className="rotate-2">
+			<a href={originalUrl} {...newtab} class="details-action">
+				<IconExternalLink/> Original
+			</a>
+		</Action>
+	{/key}
 </p>
 
 <script>
 	import newtab from '$lib/newtab'
+	import Action from '$lib/Stickers/StickerActionWrapper.svelte'
 	import IconShare from '$lib/icons/Share.svelte'
 	import IconDownload from '$lib/icons/Download.svelte'
 	import IconExternalLink from '$lib/icons/ExternalLink.svelte'
@@ -37,9 +50,16 @@
 		return {files: [file]}
 	}
 
+	function previewImage(image) {
+		if (!image) return
+		return urlFor(image).height(160).url()
+	}
+
+	$: image = image
+
 	$: filename = `shohei-ohtani-${emotion.emoji}`
 
-	$: originalUrl = image.source || image.original
+	$: originalUrl = image.source || image.originalUrl
 
 	$: downloadUrl = urlFor(image.face)
 		.height(120)

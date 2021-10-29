@@ -1,7 +1,7 @@
 <ul class="grid gap-[1px] items-center">
 	{#each filteredStickers() as sticker (sticker)}
 		<li class="h-full" class:random>
-			<Sticker {sticker} showDetails={random} />
+			<Sticker {sticker} />
 		</li>
 	{/each}
 </ul>
@@ -12,7 +12,7 @@
 		padding-bottom: env(safe-area-inset-bottom);
 	}
 
-	.random { @apply col-span-full max-w-[200px] mx-auto; }
+	.random { @apply col-span-full mx-auto; }
 
 	@media (max-width: 475px) {
 		ul { @apply grid-cols-4; }

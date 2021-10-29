@@ -1,5 +1,3 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
-
 module.exports = {
 	mode: 'jit',
 	purge: ['./src/**/*.{svelte,html}'],
@@ -40,5 +38,7 @@ module.exports = {
 	variants: {
 		extend: {},
 	},
-	plugins: [],
+	plugins: [
+		require('@tailwindcss/line-clamp'),
+	],
 }

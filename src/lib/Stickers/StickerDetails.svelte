@@ -1,72 +1,32 @@
 <div class="root" transition:slide={{ y: -100 }}>
 	<CloseDetails/>
 
-	<div class="title grid pr-4 gap-2">
-		<p class="text-3xl text-red">
-			{#each runes(emotion.emoji) as emoji}
-				<Emoji {emoji} />
-			{/each}
-		</p>
-
-		<figure class="relative" in:scale={{ delay: 300 }}>
-			<img
-				class="absolute right-0 bottom-0 drop-shadow-lg"
-				src={previewUrl}
-				alt={meta.description || emotion.emoji}
-				draggable="false"
-			/>
-		</figure>
-	</div>
+	<StickerEmojis {emotion} />
 
 	<StickerActions {image} {emotion} />
 
 	{#if !!meta.date && !!meta.description}
-		<div class="text-sm mt-4">
-			{#if meta.date}
-				<time datetime={meta.date} class="block uppercase text-xs text-white text-opacity-70">
-					{formatDate(meta.date)}
-				</time>
-			{/if}
-
-			{#if meta.description}
-				<p class="mt-2">{meta.description}</p>
-			{/if}
-		</div>
+		<StickerMeta {meta} />
 	{/if}
 </div>
 
 <style lang="postcss">
 	.root {
 		@apply
-			fixed z-[1] right-1/2 bottom-0 sm:translate-x-1/2 w-[400px]
-			p-4 rounded-t-2xl shadow-2xl border-2 border-b-0 border-white bg-red text-white
-			sm-:w-[calc(100%-2rem)] sm-:right-0 sm-:rounded-r-none sm-:border-r-0;
+			fixed z-[1] right-1/2 w-[400px] max-h-[80vh] p-4 border-2 border-white shadow-2xl bg-red text-white
+			sm:translate-x-1/2 sm:bottom-8 sm:rounded-2xl
+			sm-:w-[calc(100%-2rem)] sm-:right-0 sm-:bottom-0 sm-:rounded-tl-2xl sm-:border-r-0 sm-:border-b-0;
 
 		padding-bottom: calc(1rem + env(safe-area-inset-bottom));
-	}
-
-	.title {
-		grid-template-columns: 4fr 1fr;
 	}
 </style>
 
 <script>
-	import { slide, scale } from 'svelte/transition'
-	import { urlFor } from '$lib/sanity'
+	import { slide } from 'svelte/transition'
 	import CloseDetails from './CloseDetails.svelte'
-	import Emoji from '$lib/Emojis/Emoji.svelte'
+	import StickerEmojis from './StickerEmojis.svelte'
 	import StickerActions from './StickerActions.svelte'
-	import runes from 'runes'
+	import StickerMeta from './StickerMeta.svelte'
 
 	export let image, emotion, meta
-
-	$: previewUrl = urlFor(image.face).height(100).url()
-
-	function formatDate(date) {
-		return new Date(date).toLocaleDateString('en-US', {
-			month: 'short',
-			day: 'numeric',
-			year: 'numeric',
-		})
-	}
 </script>

@@ -20,6 +20,7 @@
 	"dependencies": {
 		"@sanity/client": "^2.21.3",
 		"@sanity/image-url": "^1.0.1",
+		"@tailwindcss/line-clamp": "^0.2.2",
 		"runes": "^0.4.3"
 	}
 }
