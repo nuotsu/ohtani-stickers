@@ -1,7 +1,14 @@
 <p class="flex flex-wrap justify-evenly gap-2 mt-2">
-	<a href={downloadUrl} class="action">
-		<IconDownload/> Download
-	</a>
+	{#if navigator.canShare}
+		<button class="action">
+			<IconShare/> Share
+		</button>
+	{:else}
+		<a href={downloadUrl} class="action">
+			<IconDownload/> Download
+		</a>`
+	{/if}
+
 	<a href={originalUrl} {...newtab} class="action">
 		<IconExternalLink/> Original
 	</a>
@@ -13,6 +20,7 @@
 
 <script>
 	import newtab from '$lib/newtab'
+	import IconShare from '$lib/icons/Share.svelte'
 	import IconDownload from '$lib/icons/Download.svelte'
 	import IconExternalLink from '$lib/icons/ExternalLink.svelte'
 	import { urlFor } from '$lib/sanity'
