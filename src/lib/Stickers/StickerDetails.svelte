@@ -3,7 +3,7 @@
 
 	<StickerEmojis {emotion} />
 
-	<StickerActions {image} {emotion} />
+	<StickerActions {image} {emotion} {_id} />
 
 	{#if !!meta.date && !!meta.description}
 		<StickerMeta {meta} />
@@ -28,5 +28,5 @@
 	import StickerActions from './StickerActions.svelte'
 	import StickerMeta from './StickerMeta.svelte'
 
-	export let image, emotion, meta
+	export let image, emotion, meta, _id
 </script>

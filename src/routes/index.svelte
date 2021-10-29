@@ -9,7 +9,6 @@
 	import EmojiToolbar from '$lib/Emojis/EmojiToolbar.svelte'
 	import StickerList from '$lib/Stickers/StickerList.svelte'
 	import StickerDetails from '$lib/Stickers/StickerDetails.svelte'
-	import client from '$lib/sanity'
 	import { setContext } from 'svelte'
 	import { selectedSticker } from '$lib/stores'
 
@@ -20,6 +19,7 @@
 </script>
 
 <script context="module">
+	import client from '$lib/sanity'
 	import runes from 'runes'
 
 	export async function load() {
@@ -30,7 +30,8 @@
 					face,
 					original,
 					'originalUrl': original.asset->url,
-					source
+					source,
+					gettyEmbed
 				},
 				emotion,
 				meta

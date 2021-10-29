@@ -10,4 +10,6 @@
 
 <script>
 	import newtab from '$lib/newtab'
+
+	let hidden = true
 </script>

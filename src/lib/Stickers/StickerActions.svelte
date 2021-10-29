@@ -25,9 +25,15 @@
 
 	{#key originalUrl}
 		<Action image={previewImage(image.original)} className="rotate-2">
-			<a href={originalUrl} {...newtab} class="details-action">
-				<IconExternalLink/> Original
-			</a>
+			{#if !!image.gettyEmbed}
+				<a href="/sticker/{_id}" class="details-action">
+					<IconCode/> Original
+				</a>
+			{:else}
+				<a href={originalUrl} {...newtab} class="details-action">
+					<IconExternalLink/> Original
+				</a>
+			{/if}
 		</Action>
 	{/key}
 </p>
@@ -37,10 +43,11 @@
 	import Action from '$lib/Stickers/StickerActionWrapper.svelte'
 	import IconShare from '$lib/icons/Share.svelte'
 	import IconDownload from '$lib/icons/Download.svelte'
+	import IconCode from '$lib/icons/Code.svelte'
 	import IconExternalLink from '$lib/icons/ExternalLink.svelte'
 	import { urlFor } from '$lib/sanity'
 
-	export let image, emotion
+	export let image, emotion, _id
 
 	async function prepareShareData(url) {
 		let response = await fetch(url)
