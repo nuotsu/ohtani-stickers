@@ -31,7 +31,7 @@
 					original,
 					'originalUrl': original.asset->url,
 					source,
-					gettyEmbed
+					embed
 				},
 				emotion,
 				meta

@@ -23,9 +23,9 @@
 		{/if}
 	{/await}
 
-	{#key originalUrl}
+	{#key _id}
 		<Action image={previewImage(image.original)} className="rotate-2">
-			{#if !!image.gettyEmbed}
+			{#if !!image.embed}
 				<a href="/sticker/{_id}" class="details-action">
 					<IconCode/> Original
 				</a>

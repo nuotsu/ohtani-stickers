@@ -3,7 +3,7 @@
 		<a href="/">← Back</a>
 	</nav>
 
-	{#if embed}
+	{#if !!embed}
 		<article class="mt-8">{@html embed}</article>
 	{/if}
 </div>
@@ -18,7 +18,7 @@
 <script>
 	export let sticker
 
-	let embed = sticker.image.gettyEmbed
+	let { embed } = sticker.image
 </script>
 
 <script context="module">
@@ -29,12 +29,17 @@
 
 		const sticker = await client.getDocument(id)
 
+		if (!!sticker) {
+			return {
+				props: {
+					sticker,
+				},
+			}
+		}
+
 		return {
-			props: {
-				sticker,
-			},
-			redirect: !sticker && '/',
-			status: !sticker ? 300 : 200,
+			status: 300,
+			redirect: '/',
 		}
 	}
 </script>
