@@ -34,6 +34,12 @@
 		}
 	}
 
+	@layer components {
+		.details-action {
+			@apply flex-1 flex items-center justify-center gap-2 p-2 rounded bg-white text-red;
+		}
+	}
+
 	:global(#svelte) {
 		display: flex;
 		flex-direction: column;
