@@ -1,7 +1,3 @@
-<svelte:head>
-	<title>The Faces of Shohei Ohtani</title>
-</svelte:head>
-
 <Header/>
 
 <main class="flex-1 w-full max-w-7xl mx-auto p-4 pt-0">
