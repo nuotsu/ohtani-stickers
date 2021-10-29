@@ -4,8 +4,6 @@
 			Loading...
 		</button>
 	{:then shareData}
-		{console.log(shareData.files[0])}
-
 		{#if navigator.canShare && navigator.canShare(shareData)}
 			<button class="details-action" on:click={() => navigator.share(shareData)}>
 				<IconShare/> Share
