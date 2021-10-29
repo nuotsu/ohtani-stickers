@@ -4,6 +4,8 @@
 			Loading...
 		</button>
 	{:then shareData}
+		{console.log(shareData.files[0])}
+
 		{#if navigator.canShare && navigator.canShare(shareData)}
 			<button class="details-action" on:click={() => navigator.share(shareData)}>
 				<IconShare/> Share
@@ -30,8 +32,10 @@
 	export let image, emotion
 
 	async function prepareShareData(url) {
-		let blob = (await fetch(url)).blob()
-		let file = new File([blob], filename, {type: blob.type})
+		let response = await fetch(url)
+		let blob = await response.blob()
+		let ext = blob.type.split('image/')[1]
+		let file = new File([blob], `${filename}.${ext}`, {type: blob.type})
 		return {files: [file]}
 	}
 
