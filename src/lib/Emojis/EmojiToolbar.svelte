@@ -7,7 +7,8 @@
 	<EmojiList {expand} />
 
 	<button
-		class="more" class:expand
+		class="more grid place-content-center bg-red text-lg shadow-lg"
+		class:expand
 		on:click={() => expand = !expand}
 		title={expand ? 'Collapse' : 'Expand'}
 	>
@@ -16,11 +17,6 @@
 </div>
 
 <style lang="postcss">
-	.more {
-		box-shadow: 0 0 0.5rem #313131;
-		@apply grid place-content-center bg-red text-lg;
-	}
-
 	.more.expand {
 		@apply w-full rounded-t-md;
 	}
