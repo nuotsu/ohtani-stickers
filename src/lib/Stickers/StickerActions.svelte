@@ -69,7 +69,7 @@
 	$: originalUrl = image.source || image.originalUrl
 
 	$: downloadUrl = urlFor(image.face)
-		.height(120)
+		.height(200)
 		.forceDownload(filename)
 		.url()
 </script>
