@@ -42,7 +42,7 @@
 
 <script>
 	import newtab from '$lib/newtab'
-	import Action from '$lib/Stickers/StickerActionWrapper.svelte'
+	import Action from '$lib/Stickers/ActionWrapper.svelte'
 	import IconShare from '$lib/icons/Share.svelte'
 	import IconDownload from '$lib/icons/Download.svelte'
 	import IconCode from '$lib/icons/Code.svelte'

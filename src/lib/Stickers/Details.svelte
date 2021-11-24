@@ -7,7 +7,7 @@
 
 	<StickerEmojis {emotion} />
 
-	<StickerActions {image} {emotion} {_id} />
+	<Actions {image} {emotion} {_id} />
 
 	{#if !!meta.date && !!meta.description}
 		<StickerMeta {meta} />
@@ -24,7 +24,7 @@
 	import { slide } from 'svelte/transition'
 	import CloseDetails from './CloseDetails.svelte'
 	import StickerEmojis from './StickerEmojis.svelte'
-	import StickerActions from './StickerActions.svelte'
+	import Actions from './Actions.svelte'
 	import StickerMeta from './StickerMeta.svelte'
 
 	export let image, emotion, meta, _id

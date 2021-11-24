@@ -2,13 +2,13 @@
 <StickerList {stickers} />
 
 {#if !!$selectedSticker}
-	<StickerDetails {...$selectedSticker} />
+	<Details {...$selectedSticker} />
 {/if}
 
 <script>
 	import EmojiToolbar from '$lib/Emojis/EmojiToolbar.svelte'
 	import StickerList from '$lib/Stickers/StickerList.svelte'
-	import StickerDetails from '$lib/Stickers/StickerDetails.svelte'
+	import Details from '$lib/Stickers/Details.svelte'
 	import { setContext } from 'svelte'
 	import { selectedSticker } from '$lib/stores'
 
