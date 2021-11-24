@@ -1,4 +1,8 @@
-<div class="root" transition:slide={{ y: -100 }}>
+<div transition:slide={{ y: -100 }} class="
+	root fixed z-[1] right-1/2 w-[400px] max-h-[80vh] p-4 bg-blur shadow-2xl
+	sm:translate-x-1/2 sm:bottom-8 sm:rounded-2xl
+	sm-:w-full sm-:inset-x-0 sm-:bottom-0 sm-:rounded-t-2xl
+">
 	<CloseDetails/>
 
 	<StickerEmojis {emotion} />
@@ -12,11 +16,6 @@
 
 <style lang="postcss">
 	.root {
-		@apply
-			fixed z-[1] right-1/2 w-[400px] max-h-[80vh] p-4 border-2 border-white shadow-2xl bg-red text-white
-			sm:translate-x-1/2 sm:bottom-8 sm:rounded-2xl
-			sm-:w-full sm-:inset-x-0 sm-:bottom-0 sm-:rounded-t-2xl sm-:border-b-0;
-
 		padding-bottom: calc(1rem + env(safe-area-inset-bottom));
 	}
 </style>

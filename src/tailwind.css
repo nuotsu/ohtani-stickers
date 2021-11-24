@@ -30,8 +30,13 @@
 
 @layer components {
 	.details-action {
+		@apply flex items-center justify-center gap-2 w-full p-2 rounded bg-red text-white;
+	}
+
+	.bg-blur {
 		@apply
-			flex items-center justify-center gap-2 w-full p-2 rounded bg-white text-red
+			bg-gray-lighter bg-opacity-90 backdrop-blur-sm
+			dark:bg-gray-dark dark:bg-opacity-90
 		;
 	}
 }

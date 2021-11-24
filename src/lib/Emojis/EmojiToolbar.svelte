@@ -1,9 +1,4 @@
-<div class="
-	root sticky top-2 z-[1] overflow-hidden w-full max-w-3xl mx-auto mb-2 rounded-md
-	text-2xl bg-gray-lighter bg-opacity-90 backdrop-blur-sm
-	shadow-lg
-	dark:bg-gray-dark dark:bg-opacity-90
-">
+<div class="root sticky top-2 z-[1] overflow-hidden w-full max-w-3xl mx-auto mb-2 rounded-md text-2xl bg-blur shadow-lg">
 	<EmojiList {expand} />
 
 	<button

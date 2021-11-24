@@ -10,13 +10,11 @@
 	ul {
 		grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
 		padding-bottom: env(safe-area-inset-bottom);
+
+		@apply sm-:grid-cols-4;
 	}
 
 	.random { @apply col-span-full mx-auto; }
-
-	@media (max-width: 475px) {
-		ul { @apply grid-cols-4; }
-	}
 </style>
 
 <script>

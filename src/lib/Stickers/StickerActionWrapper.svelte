@@ -4,11 +4,15 @@
 	</div>
 
 	{#if image}
-		<figure class="animate-fadein transition-transform px-2">
+		<figure class="animate-fadein transition-transform px-2 pointer-events-none">
 			<img
 				class="mx-auto -mb-1 h-[80px] drop-shadow-lg rounded object-cover {className}"
-				{src} alt="" draggable="false"
+				{src} alt="" draggable="false" height="80"
 			/>
+		</figure>
+	{:else}
+		<figure>
+			<span class="-mb-1 block h-[80px]"></span>
 		</figure>
 	{/if}
 </div>

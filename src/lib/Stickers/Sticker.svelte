@@ -13,7 +13,7 @@
 		<img
 			class="mx-auto drop-shadow-md"
 			src={stickerUrl}
-			alt={sticker.meta.description || sticker.emotion.emoji}
+			alt={sticker.meta?.description || sticker.emotion.emoji}
 			height="200"
 			draggable="false"
 		/>

@@ -23,19 +23,21 @@
 		{/if}
 	{/await}
 
-	{#key _id}
-		<Action image={previewImage(image.original)} className="rotate-2">
-			{#if !!image.embed}
-				<a href="/sticker/{_id}" class="details-action">
-					<IconCode/> Original
-				</a>
-			{:else}
-				<a href={originalUrl} {...newtab} class="details-action">
-					<IconExternalLink/> Original
-				</a>
-			{/if}
-		</Action>
-	{/key}
+	{#if !hideOriginal}
+		{#key _id}
+			<Action image={previewImage(image.original)} className="rotate-2">
+				{#if !!image.embed}
+					<a href="/sticker/{_id}" class="details-action" rel="external">
+						<IconCode/> Original
+					</a>
+				{:else}
+					<a href={originalUrl} {...newtab} class="details-action">
+						<IconExternalLink/> Original
+					</a>
+				{/if}
+			</Action>
+		{/key}
+	{/if}
 </p>
 
 <script>
@@ -47,7 +49,7 @@
 	import IconExternalLink from '$lib/icons/ExternalLink.svelte'
 	import { urlFor } from '$lib/sanity'
 
-	export let image, emotion, _id
+	export let image, emotion, _id, hideOriginal = false
 
 	async function prepareShareData(url) {
 		let response = await fetch(url)

@@ -1,14 +1,14 @@
 <div class="text-sm mt-4">
 	{#if date}
-		<time datetime={date} class="block uppercase text-xs text-white text-opacity-70">
+		<time datetime={date} class="block uppercase text-xs text-opacity-70">
 			{date}
 		</time>
 	{/if}
 
 	{#if description}
 		<p
-			class="mt-2" class:line-clamp-3={!expand}
-			on:click={() => expand = !expand}
+			class="mt-2" class:line-clamp-3={expandable && !expand}
+			on:click={handleClick}
 		>
 			{description}
 		</p>
@@ -16,9 +16,15 @@
 </div>
 
 <script>
-	export let meta
+	export let meta, expandable = true
 
 	let expand = false
+
+	function handleClick() {
+		if (expandable) {
+			expand = !expand
+		}
+	}
 
 	$: date = new Date(meta.date).toLocaleDateString('en-US', {
 		month: 'short',

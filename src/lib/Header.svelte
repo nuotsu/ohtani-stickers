@@ -1,18 +1,27 @@
-<header class="py-8 px-2 text-center font-serif font-bold">
+<svelte:head>
+	<link rel="reload" href="/app-icon-180.png" as="image">
+</svelte:head>
+
+<header class="grid gap-6 sm-:gap-4 items-center py-8 px-2 max-w-screen-md mx-auto font-serif font-bold">
+	<figure>
+		<img
+			class="rounded transform -rotate-6 w-[80px] sm-:w-[60px] shadow-lg"
+			src="/app-icon-180.png"
+			alt="App icon with Shohei Ohtani's face"
+			loading="eager" draggable="false"
+		/>
+	</figure>
+
 	<h1 class="max-w-max mx-auto">
 		<span class="relative z-[1]">The Faces of</span>
 		<span class="relative block text-3xl">
 			<strong class="relative z-[1]">Shohei Ohtani</strong>
-			<span class="select-none number font-sans">17</span>
 		</span>
 	</h1>
 </header>
 
 <style lang="postcss">
-	.number {
-		@apply
-			absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-[-35%] text-red text-opacity-20 text-6xl
-			dark:text-opacity-60
-		;
+	header {
+		grid-template-columns: auto 1fr;
 	}
 </style>
