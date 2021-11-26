@@ -35,7 +35,7 @@
 
 	.bg-blur {
 		@apply
-			bg-gray-lighter bg-opacity-90 backdrop-blur-sm
+			bg-gray-lighter bg-opacity-90 backdrop-filter backdrop-blur-sm
 			dark:bg-gray-dark dark:bg-opacity-90
 		;
 	}
